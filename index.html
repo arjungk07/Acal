@@ -6,19 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arjun Calculator</title>
   <link rel="stylesheet" href="calculator.css">
-  <link rel="stylesheet" href="D:/calculator/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap14.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- dropdown
-  <div class="dropdown d-flex justify-content-end">
-    <button class="dropbtn">More</button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> -->
 
   <div class="container">
     <!-- abc input box -->
@@ -62,23 +53,9 @@
         <button type="button" class="btn btn-outline-info bn" onclick="display('0')">0</button>
         <button type="button" class="btn btn-warning bn" onclick="calculate('=')">=</button>
         <button type="button" class="btn btn-warning bn" onclick="display('+')">+</button>
-        <!-- <button type="button" class="btn btn-warning bn" onclick="sod()">sod</button>
-          <button type="button" class="btn btn-warning bn" onclick="square()">x2</button>
-          <button type="button" class="btn btn-warning bn" onclick="cube()">x3</button>
-          <button type="button" class="btn btn-warning bn" onclick="oddeven()">O/E</button>
-          <button type="button" class="btn btn-warning bn" onclick="leap()">leap</button>
-          <button type="button" class="btn btn-warning bn" onclick="plus()" style="font-size:15px;">(a+b)2</button>
-          <button type="button" class="btn btn-warning bn" onclick="minus()" style="font-size:15px; font: weight 15px;">(a-b)2</button> -->
-        <!-- <button type="button" class="btn btn-warning bn" onclick="a()">a</button>
-          <button type="button" class="btn btn-warning bn" onclick="b()">b</button>
-          <button type="button" class="btn btn-warning bn" onclick="c()">c</button>
-          <button type="button" class="btn btn-warning bn" onclick="gcd()">GCD</button>
-          <button type="button" class="btn btn-warning bn" onclick="lcm()">LCM</button> -->
-
-      </div>
-      <!-- right arrow -->
+       
     </div>
-    <a href="D:\calculator\additional.html"><img src="D:\photos\arrow-right-circle.svg" class="arrowright"></a>
+    <a href="resources/additional.html"><img src="resources/arrow-right-circle.svg" class="arrowright"></a>
   </div>
 
 
@@ -204,96 +181,7 @@
     const lnvalue = Math.log(result);
     document.getElementById("result").value = 'ln(' + result + ')=' + lnvalue;
   }
-  //   // a
-  //   const a = () => {
-  //     let result = document.getElementById('result').value;
-  //     document.getElementById('a').value = result;
-  //     document.getElementById('result').value = "";
-  //   }
-  //   // b
-  //   const b = () => {
-  //     let result = document.getElementById('result').value;
-  //     document.getElementById('b').value = result;
-  //     document.getElementById('result').value = "";
-  //   }
-  //   // c
-  //   const c = () => {
-  //     let result = document.getElementById('result').value;
-  //     document.getElementById('c').value = result;
-  //     document.getElementById('result').value = "";
-  //   }
-  //   // (a+b)2
-  //   const plus = () => {
-  //     // a2
-  //     let a = document.getElementById('a').value;
-  //     let asol;
-  //     asol = a * a;
-  //     // b2
-  //     let b = document.getElementById('b').value;
-  //     let bsol;
-  //     bsol = b * b;
-  //     // 2ab
-  //     let twoab = 2 * a * b;
-  //     // algebra solution
-  //     let sol = asol + bsol + twoab;
-  //     document.getElementById('result').value = sol;
-  //   }
-  //   // (a-b)2
-  //   const minus = () => {
-  //     // a2
-  //     let a = document.getElementById('a').value;
-  //     let asol;
-  //     asol = a * a;
-  //     // b2
-  //     let b = document.getElementById('b').value;
-  //     let bsol;
-  //     bsol = b * b;
-  //     // 2ab
-  //     let twoab = 2 * a * b;
-  //     // algebra solution
-  //     let sol = asol + bsol - twoab;
-  //     document.getElementById('result').value = sol;
-  //   }
-  //   // find the greatest of Two Number
-  //   const gcd=()=>{
-  //     let a=document.getElementById("a").value;
-  //     let b=document.getElementById("b").value;
-  //     // find the greatest common digit
-  //     let answer=Math.max(a,b);
-  //     while(answer>0)
-  //   {
-  //     if(a%answer==0 && b%answer==0)
-  //   {
-  //     break;
-  //   }
-  //   answer--;
-  //   }
-  //   document.getElementById("result").value=answer;
-  //   }
-  //   // least common multiply
-  //   const lcm=()=>
-  //   {
-  //     let a=document.getElementById("a").value;
-  //     let b=document.getElementById("b").value;
-  //     let product=a*b;
-  // // find the greatest common digit
-  // let answer=Math.max(a,b);
-  //     while(answer>0)
-  //   {
-  //     if(a%answer==0 && b%answer==0)
-  //   {
-  //     break;
-  //   }
-  //   answer--;
-  //   }
-  //     for(i=0;i<=product;i++)
-  //   {
-  //     if(answer*i==product)
-  //   {
-  //     document.getElementById("result").value=i;
-  //   }
-  //   }
-  //   }
+ 
 </script>
 
 
