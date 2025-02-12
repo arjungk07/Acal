@@ -214,7 +214,7 @@
         const result = (gramdisp * waste) / 100;
         if (result != 0) {
             const total = parseInt(gramdisp) + result;
-            const waste = total - rate;
+            const waste = result;
             document.getElementById("waste-disp").value = waste;
             document.getElementById("Total").value = total;
         }
