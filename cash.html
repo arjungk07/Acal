@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Calculator</title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+</head>
+<style>
+    * {
+        font-family: sans-serif;
+        letter-spacing: 1px;
+    }
+
+    button {
+        background-color: azure;
+    }
+
+    .notes {
+        font-weight: 700;
+        font-size: 15px;
+    }
+
+    .cash-total {
+        font-weight: 700;
+        font-size: 15px;
+    }
+
+    .total {
+        font-weight: 700;
+        font-size: 15px;
+    }
+
+    a:hover {
+        box-shadow: 2px 0px 8px rgb(6,216, 231), -2px 0px 10px rgb(6, 216, 231);
+    }  
+
+    input:hover {
+        box-shadow: 2px 0px 8px rgb(6,216, 231), -2px 0px 10px rgb(6, 216, 231);
+    }
+   
+</style>
+
+<body>
+
+    <div class="container mb-4">
+
+
+        <!-- navbar -->
+        <div>
+            <h1 class="ms-3 mt-4 h1 text-info">ACal</h1>
+        </div>
+
+        <ul class="nav nav-pills mt-2 d-flex justify-content-evenly align-items-center">
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  mt-1" href="cash.html">Cash </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="additional.html"><img src="image/arrow-left-circle.svg"
+                ></a>
+            </li>
+        </ul>
+
+        <!-- money display -->
+        <div class="d-flex justify-content-between mt-3">
+            <div class="notes bg-info-subtle px-2 py-3  px-lg-5 px-md-4 rounded">
+                <p>Notes</p>
+                <div id="notes" style="padding-left: 1px;"></div>
+            </div>
+            <div class="cash-total bg-warning-subtle rounded py-3 px-2 px-lg-5 px-md-4">
+                <p style="font-weight: 600;">Cash Total</p>
+                <p id="cash-total" style="padding-left: 1px;"></p>
+            </div>
+            <div class="total bg-success-subtle rounded py-3 px-1 px-lg-5 px-md-4">
+                <p style="font-weight: 600; text-align: center;">Total Amount</p>
+                <p id="total" style="padding-left: 1px;"></p>
+            </div>
+        </div>
+
+
+        <div class="card mt-3">
+            <div class="card-body m-0 p-2 p-lg-4 p-md-3">
+                <!-- 2000 rupees  -->
+                <div class="d-flex justify-content-between mb-2 ">
+                    <!-- 2000 text -->
+                    <div>
+                        <p style="font-size: 20px; font-weight: 700; display: block; position: relative;" class="py-1">
+                            2000</p>
+                    </div>
+                    <!-- multiply icon -->
+                    <div class="py-1" style="position:relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg></div>
+                    <!-- input value -->
+                    <div>
+                        <input type="number" id="tt-num" style="max-width:60px;" class="form-control " onkeyup="tt()"
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                    <!-- equal to -->
+                    <div>
+                        <p class="py-2">=</p>
+                    </div>
+                    <!-- display value -->
+                    <div class="display">
+                        <input type="text" id="tt-disp" style="max-width:100px;" class="form-control "
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                </div>
+
+                <!-- 1000 rupees -->
+                <div class="d-flex justify-content-between mb-2 ">
+                    <!-- 2000 text -->
+                    <div>
+                        <p style="font-size: 20px; font-weight: 700; display: block; position: relative;" class="py-1">
+                            1000</p>
+                    </div>
+                    <!-- multiply icon -->
+                    <div class="py-1" style="position:relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg></div>
+                    <!-- input value -->
+                    <div>
+                        <input type="number" id="ot-num" style="max-width:60px;" class="form-control " onkeyup="ot()"
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                    <!-- equal to -->
+                    <div>
+                        <p class="py-2">=</p>
+                    </div>
+                    <!-- display value -->
+                    <div class="display">
+                        <input type="text" id="ot-disp" style="max-width:100px;" class="form-control "
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                </div>
+
+                <!-- 500 rupees -->
+                <div class="d-flex justify-content-between mb-2 ">
+                    <!-- 2000 text -->
+                    <div>
+                        <p style="font-size: 20px; font-weight: 700; display: block; position: relative; padding-left:0.5em;"
+                            class="py-1"> 500</p>
+                    </div>
+                    <!-- multiply icon -->
+                    <div class="py-1" style="position:relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg></div>
+                    <!-- input value -->
+                    <div>
+                        <input type="number" id="fh-num" style="max-width:60px;" class="form-control " onkeyup="fh()"
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                    <!-- equal to -->
+                    <div>
+                        <p class="py-2">=</p>
+                    </div>
+                    <!-- display value -->
+                    <div class="display">
+                        <input type="text" id="fh-disp" style="max-width:100px;" class="form-control "
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                </div>
+
+                <!-- 200 rupees -->
+                <div class="d-flex justify-content-between mb-2 ">
+                    <div>
+                        <p style="font-size: 20px; font-weight: 700; display: block; position: relative; padding-left: 0.5em;"
+                            class="py-1">
+                            200</p>
+                    </div>
+                    <!-- multiply icon -->
+                    <div class="py-1" style="position:relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg></div>
+                    <!-- input value -->
+                    <div>
+                        <input type="number" id="th-num" style="max-width:60px;" class="form-control " onkeyup="th()"
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                    <!-- equal to -->
+                    <div>
+                        <p class="py-2">=</p>
+                    </div>
+                    <!-- display value -->
+                    <div class="display">
+                        <input type="text" id="th-disp" style="max-width:100px;" class="form-control "
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                </div>
+
+                <!-- 100 rupees -->
+                <div class="d-flex justify-content-between mb-2 ">
+                    <div>
+                        <p style="font-size: 20px; font-weight: 700; display: block; position: relative; padding-left: 0.5em;"
+                            class="py-1">100</p>
+                    </div>
+                    <!-- multiply icon -->
+                    <div class="py-1" style="position:relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg></div>
+                    <!-- input value -->
+                    <div>
+                        <input type="number" id="oh-num" style="max-width:60px;" class="form-control " onkeyup="oh()"
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                    <!-- equal to -->
+                    <div>
+                        <p class="py-2">=</p>
+                    </div>
+                    <!-- display value -->
+                    <div class="display">
+                        <input type="text" id="oh-disp" style="max-width:100px;" class="form-control "
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                </div>
+
+                <!-- 50 rupees -->
+                <div class="d-flex justify-content-between mb-2 ">
+                    <div>
+                        <p style="font-size: 20px; font-weight: 700; display: block; position: relative; padding-left: 1em;"
+                            class="py-1">
+                            50</p>
+                    </div>
+                    <!-- multiply icon -->
+                    <div class="py-1" style="position:relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg></div>
+                    <!-- input value -->
+                    <div>
+                        <input type="number" id="f-num" style="max-width:60px;" class="form-control " onkeyup="f()"
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                    <!-- equal to -->
+                    <div>
+                        <p class="py-2">=</p>
+                    </div>
+                    <!-- display value -->
+                    <div class="display">
+                        <input type="text" id="f-disp" style="max-width:100px;" class="form-control "
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                </div>
+
+                <!-- 20 rupees -->
+                <div class="d-flex justify-content-between mb-2 ">
+                    <div>
+                        <p style="font-size: 20px; font-weight: 700; display: block; position: relative; padding-left: 1em;"
+                            class="py-1">
+                            20</p>
+                    </div>
+                    <!-- multiply icon -->
+                    <div class="py-1" style="position:relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg></div>
+                    <!-- input value -->
+                    <div>
+                        <input type="number" id="t-num" style="max-width:60px;" class="form-control " onkeyup="t()"
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                    <!-- equal to -->
+                    <div>
+                        <p class="py-2">=</p>
+                    </div>
+                    <!-- display value -->
+                    <div class="display">
+                        <input type="text" id="t-disp" style="max-width:100px;" class="form-control "
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                </div>
+
+                <!-- 10 rupees -->
+                <div class="d-flex justify-content-between mb-2 ">
+                    <div>
+                        <p style="font-size: 20px; font-weight: 700; display: block; position: relative; padding-left: 1em;"
+                            class="py-1">
+                            10</p>
+                    </div>
+                    <!-- multiply icon -->
+                    <div class="py-1" style="position:relative;"><svg xmlns="http://www.w3.org/2000/svg" width="15"
+                            height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg></div>
+                    <!-- input value -->
+                    <div>
+                        <input type="number" id="ten-num" style="max-width:60px;" class="form-control " onkeyup="ten()"
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                    <!-- equal to -->
+                    <div>
+                        <p class="py-2">=</p>
+                    </div>
+                    <!-- display value -->
+                    <div class="display">
+                        <input type="text" id="ten-disp" style="max-width:100px;" class="form-control "
+                            aria-describedby="addon-wrapping" value="0">
+                    </div>
+                </div>
+
+                <!-- Total -->
+                <div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-danger" type="button" onclick="allclear()">Clear</button>
+                        <button class="btn btn-primary" type="button" onclick="total()">Total</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    // 2000 rupees
+    const tt = () => {
+        const num = document.getElementById("tt-num").value;
+        const display = document.getElementById('tt-disp');
+        const empty = "";
+        if (num != empty) {
+            const multiply = 2000 * num;
+            display.value = multiply;
+        }
+        else {
+            display.value = "";
+        }
+    }
+    // 1000 rupees
+    const ot = () => {
+        const num = document.getElementById("ot-num").value;
+        const display = document.getElementById('ot-disp');
+
+        const multiply = 1000 * num;
+        display.value = multiply;
+    }
+    // 500 rupees
+    const fh = () => {
+        const num = document.getElementById("fh-num").value;
+        const display = document.getElementById('fh-disp');
+
+        const multiply = 500 * num;
+        display.value = multiply;
+    }
+    // 200 rupees
+    const th = () => {
+        const num = document.getElementById("th-num").value;
+        const display = document.getElementById('th-disp');
+
+        const multiply = 200 * num;
+        display.value = multiply;
+    }
+    // 100 rupees
+    const oh = () => {
+        const num = document.getElementById("oh-num").value;
+
+        const display = document.getElementById('oh-disp');
+
+        const multiply = 100 * num;
+        display.value = multiply;
+    }
+    // 50 rupees
+    const f = () => {
+        const num = document.getElementById("f-num").value;
+
+        const display = document.getElementById('f-disp');
+
+        const multiply = 50 * num;
+        display.value = multiply;
+    }
+    // 20 rupees 
+    const t = () => {
+        const num = document.getElementById("t-num").value;
+
+        const display = document.getElementById('t-disp');
+
+        const multiply = 20 * num;
+        display.value = multiply;
+    }
+    // 10 rupees
+    const ten = () => {
+        const num = document.getElementById("ten-num").value;
+
+        const display = document.getElementById('ten-disp');
+
+        const multiply = 10 * num;
+        display.value = multiply;
+    }
+
+    const total = () => {
+        // notes id
+        const ttnum = document.getElementById("tt-num").value;
+        const otnum = document.getElementById("ot-num").value;
+        const fhnum = document.getElementById("fh-num").value;
+        const thnum = document.getElementById("th-num").value;
+        const ohnum = document.getElementById("oh-num").value;
+        const fnum = document.getElementById("f-num").value;
+        const tnum = document.getElementById("t-num").value;
+        const tennum = document.getElementById("ten-num").value;
+        // total amount id
+        const tt = document.getElementById("tt-disp").value;
+        const ot = document.getElementById("ot-disp").value;
+        const fh = document.getElementById("fh-disp").value;
+        const th = document.getElementById("th-disp").value;
+        const oh = document.getElementById("oh-disp").value;
+        const f = document.getElementById("f-disp").value;
+        const t = document.getElementById("t-disp").value;
+        const ten = document.getElementById("ten-disp").value;
+
+        const totalamuont = document.getElementById("total");
+        const cashtotal = document.getElementById('cash-total');
+        const notes = document.getElementById('notes');
+
+        const total = parseInt(tt) + parseInt(ot) + parseInt(fh) + parseInt(th) + parseInt(oh) + parseInt(f) + parseInt(t) + parseInt(ten);
+        const totalnum = parseInt(ttnum) + parseInt(otnum) + parseInt(fhnum) + parseInt(thnum) + parseInt(ohnum) + parseInt(fnum) + parseInt(tnum) + parseInt(tennum);
+
+        totalamuont.innerHTML = total;
+        cashtotal.innerHTML = total
+        notes.innerHTML = totalnum;
+    }
+    const allclear = () => {
+        document.getElementById("total").innerHTML = "";
+        document.getElementById('cash-total').innerHTML = "";
+        document.getElementById('notes').innerHTML = "";
+        document.getElementById("tt-num").value = "";
+        document.getElementById("ot-num").value = "";
+        document.getElementById("fh-num").value = "";
+        document.getElementById("th-num").value = "";
+        document.getElementById("oh-num").value = "";
+        document.getElementById('f-num').value = "";
+        document.getElementById("t-num").value = "";
+        document.getElementById("ten-num").value = "";
+        document.getElementById("tt-disp").value = "";
+        document.getElementById("ot-disp").value = "";
+        document.getElementById("fh-disp").value = "";
+        document.getElementById("th-disp").value = "";
+        document.getElementById("oh-disp").value = "";
+        document.getElementById("f-disp").value = "";
+        document.getElementById("t-disp").value = "";
+        document.getElementById("ten-disp").value = "";
+    }
+</script>
+
+</html>

@@ -1,0 +1,109 @@
+:root {
+
+  --blue: rgb(58, 58, 219);
+  --pink: rgb(255, 192, 203);
+  --yellow: rgb(255, 255, 0);
+  --orange: rgba(249, 167, 14, 0.949);
+  --white: white;
+}
+
+* {
+  font-family: sans-serif;
+  letter-spacing: 2px;
+}
+
+.cal-body{
+  box-sizing: border-box;
+  position: relative;
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap:0.5rem;
+  grid-row-gap: 0.8rem;
+}
+
+.buttons button {
+  border-radius:100rem;
+  position:relative;
+  border:transparent;
+  background-color: white;
+}
+button:hover{
+  box-shadow: 2px 0px 8px rgb(219, 6, 231),-2px 0px 10px rgb(219, 6, 231);
+}
+
+button:active{
+  box-shadow: 3px 0px 10px rgb(11, 124, 176),-3px 0px 10px rgb(219, 6, 231);
+  transition: box-shadow o.2s ease-in-out;
+
+}
+
+input:hover{
+  box-shadow: 2px 0px 8px rgb(219, 6, 231),-2px 0px 10px rgb(219, 6, 231);
+}
+
+@media screen and (max-width:600px) and (min-width:0px){
+
+  img{
+    width: 50px;
+    height: 50px;
+  }
+  input
+  {
+      width:inherit;
+      max-height: fit-content;
+  }
+  .cal-body{
+  position: relative;
+  }
+ .buttons{
+  width: inherit;
+ }
+  
+.buttons button{
+  border-radius:100rem;
+  position:relative;
+  background-color: white;
+}
+}
+button:hover{
+  box-shadow: 2px 0px 8px rgb(219, 6, 231),-2px 0px 10px rgb(219, 6, 231);
+}
+
+button:active{
+  box-shadow: 3px 0px 10px rgb(11, 124, 176),-3px 0px 10px rgb(219, 6, 231);
+  transition: box-shadow o.2s ease-in-out;
+
+}
+
+input:hover{
+  box-shadow: 2px 0px 8px rgb(219, 6, 231),-2px 0px 10px rgb(219, 6, 231);
+}
+
+@media screen and (min-width:600px) {
+
+  body {
+    display: block;
+  }
+ img{
+  width: 60px;
+  height:60px;
+ }
+  h3 {
+    text-align: center;
+  }
+
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

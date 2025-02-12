@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arjun Calculator</title>
+  <link rel="stylesheet" href="css/calculator.css">
+  <link rel="stylesheet" href="bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+  <link rel="icon" href="image/calculator logo.jpg">
+</head>
+
+
+<style>
+  @media screen and (min-width:600px) {
+
+    body {
+      display: block;
+    }
+
+    img{
+    width: 60px;
+    height:60px;
+  }
+
+
+    h3 {
+      text-align: center;
+    }
+
+    .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cal-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .buttons button {
+      padding: 1rem 2rem;
+    }
+  }
+</style>
+
+<body>
+ 
+    <div class="d-flex align-items-center justify-content-arround ms-3">
+      <img src="image/calculator logo.jpg">
+      <h2 class="ms-3 mt-2 h1 text-info">ACal</h2>
+    </div>
+
+<!-- Navbar -->
+   <ul class="nav nav-pills  d-flex justify-content-evenly align-items-center">
+    <li class="nav-item">
+        <a class="nav-link anchor" aria-current="page" href="index.html">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link anchor" href="cash.html" style="font-size: 20px;">Cash </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link anchor" href="gold.html" style="font-size: 20px;">Gold</a>
+  </li>
+    <li class="nav-item" style="width: max-content;">
+        <a  class="nav-link " aria-current="page" href="additional.html"><img src="image/arrow-right-circle.svg"></a>
+    </li>
+</ul>
+ 
+
+  <!-- input box -->
+  <div>
+    <input class="form-control form-control-sm p-3 mt-1 mb-3" type="text" id="result" readonly
+      style="background-color: gainsboro; color: white;  font-size: 20px;">
+  </div>
+
+  <!-- calculator body -->
+  <div class="card" style="border: none;">
+    <!-- calculator body -->
+    <div class="cal-body d-flex mb-4" >
+      <div class="buttons flex-grow-1 ms-auto">
+        <button type="button" class="border border-info-subtle" onclick="display('%')">%</button>
+        <button type="button" class="border border-info-subtle" onclick="factor()">!</button>
+        <button type="button" class="border border-info-subtle" onclick="backspace()">C</button>
+        <button type="button" class="border border-info-subtle"  onclick="allclear()" >AC</button>
+        <button type="button" class="border border-info-subtle" onclick="sin()">sin</button>
+        <button type="button" class="border border-info-subtle" onclick="cos()">cos</button>
+        <button type="button" class="border border-info-subtle" onclick="tan()">tan</button>
+        <button type="button" class="border border-info-subtle" onclick="log()">log</button>
+        <button type="button" class="border border-info-subtle" onclick="ln()">ln</button>
+        <button type="button" class="border border-info-subtle" onclick="sod()">sod</button>
+        <button type="button" class="border border-info-subtle" onclick="square()">x<sup>2</sup></button>
+        <button type="button" class="border border-info-subtle" onclick=" cube()">x<sup>3</sup></button>
+        <button type="button" class="border border-info-subtle" onclick="display('9')">9</button>
+        <button type="button" class="border border-info-subtle" onclick="display('8')">8</button>
+        <button type="button" class="border border-info-subtle" onclick="display('7')">7</button>
+        <button type="button" class="border border-info-subtle" onclick="display('/')">/</button>
+        <button type="button" class="border border-info-subtle" onclick="display('6')">6</button>
+        <button type="button" class="border border-info-subtle" onclick="display('5')">5</button>
+        <button type="button" class="border border-info-subtle" onclick="display('4')">4</button>
+        <button type="button" class="border border-info-subtle" onclick="display('*')">*</button>
+        <button type="button" class="border border-info-subtle" onclick="display('3')">3</button>
+        <button type="button" class="border border-info-subtle" onclick="display('2')">2</button>
+        <button type="button" class="border border-info-subtle" onclick="display('1')">1</button>
+        <button type="button" class="border border-info-subtle" onclick="display('-')">-</button>
+        <button type="button" class="border border-info-subtle" onclick="display('.')"><svg xmlns="http://www.w3.org/2000/svg"
+          width="25" height="25" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+          <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+      </svg></button>
+        <button type="button" class="border border-info-subtle"  onclick=" display('0')">0</button>
+        <button type="button" class="border border-info-subtle" onclick="calculate('=')">=</button>
+        <button type="button" class="border border-info-subtle" onclick="display('+')">+</button>
+
+      </div>
+    </div>
+
+     </div>
+
+
+</body>
+
+<!-- js -->
+<script>
+  const result = document.getElementById('result');
+
+  const display = (input) => {
+    result.value += input;
+  }
+
+  // clear
+  const backspace = () => {
+    let result = document.getElementById('result').value;
+    document.getElementById("result").value=result.substring(0,result.length-1);
+  }
+
+  // AC
+  const allclear = () => {
+    result.value = "";
+   
+  }
+  // Equal to
+  const calculate = () => {
+    try {
+      result.value = eval(result.value);
+    }
+    catch {
+      result.value = "Maths Error";
+    }
+  }
+  // sum of digit
+  const sod = () => {
+    let result = document.getElementById('result').value;
+    console.log(result);
+    const empty = "";
+
+    if (result != empty) {
+      let rem, sum = 0, sol;
+      while (result != 0) {
+        rem = result % 10;
+        sol = Math.floor(rem);
+        sum = sum + sol;
+        result = result / 10;
+      }
+      document.getElementById('result').value = Math.floor(sum);
+    }
+    else
+      document.getElementById("result").value = "Syantax Error";
+  }
+
+  // factorial
+  const factor = () => {
+    let result = document.getElementById('result').value;
+    const empty = "";
+    if (result != empty) {
+      let fact = 1;
+      for (let i = 1; i <= result; i++) {
+        fact = fact * i;
+      }
+      document.getElementById('result').value = fact;
+    }
+    else {
+      document.getElementById("result").value = "synatax Error";
+    }
+
+  }
+  // square
+  const square = () => {
+    let result = document.getElementById('result').value;
+    if (result != "") {
+      let sol = result * result;
+      document.getElementById('result').value = sol;
+    }
+    else {
+      document.getElementById("result").value = "Syntax Error";
+    }
+  }
+  // cube
+  const cube = () => {
+    let result = document.getElementById('result').value;
+    if (result != "") {
+      let sol = result * result * result;
+      document.getElementById('result').value = sol;
+    }
+    else {
+      document.getElementById("result").value = "Syntax Error";
+    }
+  }
+  // oddeven
+  const oddeven = () => {
+    let result = document.getElementById('result').value;
+    let rem;
+    rem = result % 2;
+    if (rem == 0) {
+      document.getElementById('result').value = "Even ";
+    }
+    else {
+      document.getElementById('result').value = "Odd ";
+    }
+  }
+
+  // leap year
+  const leap = () => {
+    let result = document.getElementById('result').value;
+    console.log(result);
+    let year;
+    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+      document.getElementById('result').value = "Leap year";
+    }
+    else {
+      document.getElementById('result').value = " Not Leap year";
+
+    }
+  }
+  // sin function
+  const sin = () => {
+    const result = document.getElementById("result").value;
+    const empty = "";
+    if (result != empty) {
+      rad = (result * Math.PI) / 180;
+      const sinvalue = Math.sin(rad);
+      const round = Math.round(sinvalue * 10) / 10;
+      document.getElementById("result").value = 'sin(' + result + ')=' + round;
+    }
+    else {
+      document.getElementById("result").value = "Syantax Error";
+    }
+  }
+  // cos funnction
+  const cos = () => {
+    const result = document.getElementById("result").value;
+    const empty = "";
+    if (result != empty) {
+      rad = (result * Math.PI) / 180;
+      const cosvalue = Math.cos(rad);
+      const round = Math.round(cosvalue * 10) / 10;
+      document.getElementById("result").value = 'cos(' + result + ')=' + round;
+    }
+    else {
+      document.getElementById("result").value = "Syantsx Error";
+    }
+
+  }
+  // tan
+  const tan = () => {
+    const result = document.getElementById("result").value;
+    const empty = "";
+    if (result != empty) {
+      rad = (result * Math.PI) / 180;
+      const cosvalue = Math.tan(rad);
+      const round = Math.round(cosvalue * 10) / 10;
+      document.getElementById("result").value = 'tan(' + result + ')=' + round;
+    }
+    else {
+      document.getElementById("result").value = "Syantax Error";
+    }
+
+  }
+  // log function
+  const log = () => {
+    const result = document.getElementById("result").value;
+    const empty = "";
+    if (result != empty) {
+      const logvalue = Math.log10(result);
+      document.getElementById("result").value = 'log(' + result + ')=' + logvalue;
+    }
+    else {
+      document.getElementById("result").value = "Syntax Error";
+    }
+
+  }
+  // ln function
+  const ln = () => {
+    const result = document.getElementById("result").value;
+    const empty = "";
+    if (result != empty) {
+      const lnvalue = Math.log(result);
+      document.getElementById("result").value = 'ln(' + result + ')=' + lnvalue;
+    }
+    else {
+      document.getElementById("result").value = "Syntax Error";
+    }
+  }
+  //   // a
+  //   const a = () => {
+  //     let result = document.getElementById('result').value;
+  //     document.getElementById('a').value = result;
+  //     document.getElementById('result').value = "";
+  //   }
+  //   // b
+  //   const b = () => {
+  //     let result = document.getElementById('result').value;
+  //     document.getElementById('b').value = result;
+  //     document.getElementById('result').value = "";
+  //   }
+  //   // c
+  //   const c = () => {
+  //     let result = document.getElementById('result').value;
+  //     document.getElementById('c').value = result;
+  //     document.getElementById('result').value = "";
+  //   }
+  //   // (a+b)2
+  //   const plus = () => {
+  //     // a2
+  //     let a = document.getElementById('a').value;
+  //     let asol;
+  //     asol = a * a;
+  //     // b2
+  //     let b = document.getElementById('b').value;
+  //     let bsol;
+  //     bsol = b * b;
+  //     // 2ab
+  //     let twoab = 2 * a * b;
+  //     // algebra solution
+  //     let sol = asol + bsol + twoab;
+  //     document.getElementById('result').value = sol;
+  //   }
+  //   // (a-b)2
+  //   const minus = () => {
+  //     // a2
+  //     let a = document.getElementById('a').value;
+  //     let asol;
+  //     asol = a * a;
+  //     // b2
+  //     let b = document.getElementById('b').value;
+  //     let bsol;
+  //     bsol = b * b;
+  //     // 2ab
+  //     let twoab = 2 * a * b;
+  //     // algebra solution
+  //     let sol = asol + bsol - twoab;
+  //     document.getElementById('result').value = sol;
+  //   }
+  //   // find the greatest of Two Number
+  //   const gcd=()=>{
+  //     let a=document.getElementById("a").value;
+  //     let b=document.getElementById("b").value;
+  //     // find the greatest common digit
+  //     let answer=Math.max(a,b);
+  //     while(answer>0)
+  //   {
+  //     if(a%answer==0 && b%answer==0)
+  //   {
+  //     break;
+  //   }
+  //   answer--;
+  //   }
+  //   document.getElementById("result").value=answer;
+  //   }
+  //   // least common multiply
+  //   const lcm=()=>
+  //   {
+  //     let a=document.getElementById("a").value;
+  //     let b=document.getElementById("b").value;
+  //     let product=a*b;
+  // // find the greatest common digit
+  // let answer=Math.max(a,b);
+  //     while(answer>0)
+  //   {
+  //     if(a%answer==0 && b%answer==0)
+  //   {
+  //     break;
+  //   }
+  //   answer--;
+  //   }
+  //     for(i=0;i<=product;i++)
+  //   {
+  //     if(answer*i==product)
+  //   {
+  //     document.getElementById("result").value=i;
+  //   }
+  //   }
+  //   }
+</script>
+
+
+</html>

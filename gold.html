@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Calculator</title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/gold.css">
+
+</head>
+
+
+<body>
+
+
+    <div class=" ms-2 me-2">
+        <!-- Nav Bar -->
+        <div class="mb-3">
+            <ul class="nav nav-pills  d-flex justify-content-evenly align-items-center bg-white py-2 ">
+                <li class="nav-item ">
+                    <a class="nav-link anchor" aria-current="page" href="index.html" style="font-size: 20px;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link anchor" href="cash.html" style="font-size: 20px;">Cash </a>
+                </li>
+                <li class="nav-item" style="width: max-content;">
+                    <a class="nav-link anchor" aria-current="page" href="gold.html" style="font-size: 20px;">Gold</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- Total box -->
+        <div class="">
+
+            <input type="text" class="form-control " id="Total" readonly value="0"><span
+                style="position:absolute; top: 3rem;">Total</span><span></span></input>
+
+
+
+
+        </div>
+
+        <!-- Gold Body -->
+        <div class="mt-5">
+            <!-- Rate of the Gold -->
+
+            <div class="mt-2 d-flex gap-2 justify-content-evenly">
+                <div class="col-5">
+                    <input type="number" class="form-control form-control-lg " id="rate" placeholder="Eg:7000"
+                        onkeyup="gold()"><span class="label">Gold Rate</span></input>
+                </div>
+                <span style="position: relative; top: 10px;">=</span>
+                <div class="col-5">
+                    <input type="text" class="form-control form-control-lg" id="rate-disp" readonly value="0"><span
+                        style="position:relative; bottom: 4.5rem;"></span></input>
+
+                </div>
+
+            </div>
+
+            <!-- Gold Weeight -->
+
+            <div class="mt-2 d-flex gap-2 justify-content-evenly">
+                <div class="col-5">
+                    <input type="number" class="form-control form-control-lg " id="gram" placeholder="1"
+                        onkeyup="gram()"><span class="label">Gram</span></input>
+                </div>
+                <span style="position: relative; top: 10px;">=</span>
+                <div class="col-5">
+                    <input type="number" class="form-control form-control-lg" id="gram-disp" readonly value="0"><span
+                        style="position:relative; bottom: 4.5rem;"></span></input>
+
+                </div>
+
+            </div>
+
+            <!-- Wastage Percentage -->
+
+            <div class="mt-2 d-flex gap-2 justify-content-evenly">
+                <div class="col-5">
+                    <input type="number" class="form-control form-control-lg " id="waste" placeholder="1"
+                        onkeyup="waste()"><span class="label">Wastage % </span></input>
+                </div>
+                <span style="position: relative; top: 10px;">=</span>
+                <div class="col-5">
+                    <input type="text" class="form-control form-control-lg" id="waste-disp" readonly value="0"><span
+                        style="position:relative; bottom: 4.5rem;"></span></input>
+
+                </div>
+
+            </div>
+
+            <!-- Making Charges -->
+
+            <div class="mt-2 d-flex gap-2 justify-content-evenly">
+                <div class="col-5">
+                    <input type="number" class="form-control form-control-lg " id="make-charge" placeholder="1"
+                        onkeyup="make()"><span class="label">Making $</span></input>
+                </div>
+                <span style="position: relative; top: 10px;">=</span>
+                <div class="col-5">
+                    <input type="number" class="form-control form-control-lg" id="make-disp" readonly value="0"><span
+                        style="position:relative; bottom: 4.5rem;"></span></input>
+
+                </div>
+
+            </div>
+
+            <!--GST  -->
+            <div class="mt-2 d-flex gap-2 justify-content-evenly">
+                <div class="col-5">
+                    <input type="number" class="form-control form-control-lg " id="gst" placeholder="1"
+                        onkeyup="gst()"><span class="label">GST</span></input>
+                </div>
+                <span style="position: relative; top: 10px;">=</span>
+                <div class="col-5">
+                    <input type="number" class="form-control form-control-lg" id="gst-disp" readonly value="0"><span
+                        style="position:relative; bottom: 4.5rem;"></span></input>
+
+                </div>
+
+            </div>
+
+            <!-- Total Amount  -->
+            <div>
+                <button class="btn btn-primary w-100 mb-3" type="button" onclick="total()">Total Amount</button>
+            </div>
+            <!-- Reset -->
+            <div>
+                <button class="btn btn-danger w-100 mb-3" type="button" onclick="reset()">Reset</button>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+<script>
+
+
+    const gold = () => {
+        const rate = document.getElementById("rate").value;
+        document.getElementById("rate-disp").value = " " + rate
+        document.getElementById("Total").value = rate;
+        document.getElementById("gram-disp").value = rate;
+
+    }
+
+    const gram = () => {
+        const gram = document.getElementById("gram").value;
+        const rate = document.getElementById("rate").value;
+        const gramdisp = document.getElementById("gram-disp").value;
+
+
+        const result = gram * rate;
+        document.getElementById("gram-disp").value = result;
+        document.getElementById("Total").value = result;
+    }
+
+    const gst = () => {
+        let total = document.getElementById("Total").value;
+        const rate = document.getElementById("rate").value;
+        const gram = document.getElementById("gram").value;
+        const gramdisp = document.getElementById("gram-disp").value;
+        const waste = document.getElementById("waste").value;
+        const charge = document.getElementById("make-charge").value;
+        const GST = document.getElementById("gst").value;
+
+
+        if (GST != 0) {
+
+            const gst = (total * GST) / 100;
+            const result = gst;
+            document.getElementById("gst-disp").value = result;
+        }
+        else {
+
+            document.getElementById("gst-disp").value = 0;
+
+        }
+
+
+
+
+    }
+
+    const reset = () => {
+        document.getElementById("Total").value = "";
+        document.getElementById("rate").value = "";
+        document.getElementById("rate-disp").value = "";
+        document.getElementById("gram").value = "";
+        document.getElementById("gram-disp").value = "";
+        document.getElementById("waste").value = "";
+        document.getElementById("waste-disp").value = "";
+        document.getElementById("make-charge").value = "";
+        document.getElementById("make-disp").value = "";
+        document.getElementById("gst").value = "";
+        document.getElementById("gst-disp").value = "";
+    }
+
+    const waste = () => {
+
+        let total = document.getElementById("Total").value;
+        const waste = document.getElementById("waste").value;
+        const rate = document.getElementById("rate").value;
+        let gramdisp = document.getElementById("gram-disp").value;
+
+        const result = (gramdisp * waste) / 100;
+        if (result != 0) {
+            const total = parseInt(gramdisp) + result;
+            const waste = total - rate;
+            document.getElementById("waste-disp").value = waste;
+            document.getElementById("Total").value = total;
+        }
+        else {
+            document.getElementById("waste-disp").value = waste;
+            document.getElementById("Total").value = gramdisp;
+        }
+
+
+    }
+
+    const make = () => {
+        let total = document.getElementById("Total").value;
+        const waste = document.getElementById("waste").value;
+        const rate = document.getElementById("rate").value;
+        let gramdisp = document.getElementById("gram-disp").value;
+        let makecharge = document.getElementById("make-charge").value;
+
+        const result = (gramdisp * waste) / 100;
+        const permanant = parseInt(gramdisp) + result;
+
+        if (makecharge != 0) {
+            document.getElementById("Total").value = parseInt(permanant) + parseInt(makecharge);
+            document.getElementById("make-disp").value = makecharge;
+        }
+
+        else {
+            document.getElementById("Total").value = parseInt(gram) + result;
+            document.getElementById("make-disp").value = makecharge;
+        }
+    }
+
+
+    const total = () => {
+        const gramdisp = document.getElementById("gram-disp").value;
+        console.log(gramdisp);
+        
+        const waste = document.getElementById("waste-disp").value;
+        console.log(waste);
+        
+        const charge = document.getElementById("make-disp").value;
+        console.log(charge);
+        
+        const GST = document.getElementById("gst-disp").value;
+        console.log(GST);
+        
+        const finalresult = parseInt(gramdisp)+parseInt(waste)+parseInt(charge)+parseInt(GST);
+         console.log(finalresult);
+        document.getElementById("Total").value = " Total Payment Amount = " + finalresult;
+    }
+
+</script>
+
+</html>
